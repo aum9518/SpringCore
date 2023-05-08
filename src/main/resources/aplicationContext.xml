@@ -1,6 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean id="java" class="org.example.Java"/>
+
+    <bean id="js" class="org.example.Js"/>
+   <!-- <bean id="course" class="org.example.Course">
+        <constructor-arg ref="java"/>
+    </bean>-->
+    <bean id="course" class="org.example.Course" >
+        <property name="programmingLanguages" ref="java">
+
+           <!-- <list>
+                <ref bean="java"/>
+                <ref bean="js"/>
+            </list>-->
+        </property>
+        <property name="duration" value="9"/>
+        <property name="price" value="12000"/>
+    </bean>
 </beans>
+
+
+
+
